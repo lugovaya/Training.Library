@@ -1,0 +1,59 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "C:\\Users\\apptimized\\RiderProjects\\Library\\Library.Domain\\Library.Domain.csproj",
+    "projectName": "Library.Domain",
+    "projectPath": "C:\\Users\\apptimized\\RiderProjects\\Library\\Library.Domain\\Library.Domain.csproj",
+    "outputPath": "C:\\Users\\apptimized\\RiderProjects\\Library\\Library.Domain\\obj\\",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netstandard2.0"
+    ],
+    "frameworks": {
+      "netstandard2.0": {
+        "projectReferences": {}
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netstandard2.0": {
+      "dependencies": {
+        "Microsoft.AspNetCore.Mvc.DataAnnotations": {
+          "target": "Package",
+          "version": "[2.1.0-rc1-final, )"
+        },
+        "Microsoft.EntityFrameworkCore": {
+          "target": "Package",
+          "version": "[2.1.0-rc1-final, )"
+        },
+        "Microsoft.EntityFrameworkCore.SqlServer": {
+          "target": "Package",
+          "version": "[2.1.0-rc1-final, )"
+        },
+        "Microsoft.EntityFrameworkCore.Tools": {
+          "target": "Package",
+          "version": "[2.1.0-rc1-final, )"
+        },
+        "NETStandard.Library": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.0.1, )",
+          "autoReferenced": true
+        }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}
