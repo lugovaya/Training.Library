@@ -8,3 +8,5 @@ C:\Users\apptimized\RiderProjects\Library\Library.Services\obj\Debug\netstandard
 C:\Users\apptimized\RiderProjects\Library\Library.Services\obj\Debug\netstandard2.0\Library.Services.pdb
 C:\Users\apptimized\RiderProjects\Library\Library.Services\bin\Debug\netstandard2.0\Library.Domain.dll
 C:\Users\apptimized\RiderProjects\Library\Library.Services\bin\Debug\netstandard2.0\Library.Domain.pdb
+C:\Users\apptimized\RiderProjects\Library\Library.Services\bin\Debug\netstandard2.0\Library.Repositories.dll
+C:\Users\apptimized\RiderProjects\Library\Library.Services\bin\Debug\netstandard2.0\Library.Repositories.pdb

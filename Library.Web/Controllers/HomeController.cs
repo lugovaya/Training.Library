@@ -8,10 +8,8 @@ using Library.Web.Models;
 
 namespace Library.Web.Controllers
 {
-    [NonController]
     public class HomeController : Controller
     {
-        [NonAction]
         public IActionResult Index()
         {
             return View();

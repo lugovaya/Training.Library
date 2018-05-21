@@ -2,6 +2,7 @@
 using Library.Repositories;
 using Library.Repositories.Books;
 using Library.Services;
+using Library.Web.Infrastructure.Bind.Providers;
 using Library.Web.Infrastructure.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,15 +27,13 @@ namespace Library.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc(opt =>
+            {
+                opt.ModelBinderProviders.Insert(0, new CustomModelBinderProvider());
+            });
             
             services.AddDistributedMemoryCache();
-            
-            services.AddSession(options =>
-            {
-                options.CookieName = ".MyApp.Session";
-                options.IdleTimeout = TimeSpan.FromSeconds(3600);
-            });
+            services.AddSession();
             
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<LibraryContext>(options =>
@@ -69,6 +68,7 @@ namespace Library.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            
 
             app.UseMiddleware<UsageMiddleware>();
             
@@ -78,7 +78,7 @@ namespace Library.Web
                 await next();
             });
  
-            app.Run(async (context) =>
+            app.Run(async context =>
             {
                 context.Response.ContentType = "text/html; charset=utf-8";
                 await context.Response.WriteAsync($"Текст: {context.Items["CurrentUserName"]}");

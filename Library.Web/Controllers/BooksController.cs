@@ -2,13 +2,14 @@
 using Library.Domain.Models;
 using Library.Repositories;
 using Library.Services;
+using Library.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Library.Web.Controllers
 {
     [Route("library")]
-    public class BooksController : Controller
+    public class BooksController : BaseController
     {
         private readonly IBooksRepository _booksRepository; // injection via constructor
 
@@ -20,7 +21,7 @@ namespace Library.Web.Controllers
         // GET
         public IActionResult Index()
         {
-            return View();
+            return View("Error", new ErrorViewModel());
         }
 
         [HttpGet]
@@ -37,7 +38,7 @@ namespace Library.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int bookId, LibraryItem model)
+        public async Task<IActionResult> Edit(int bookId, [Bind("Title", "Description")] LibraryItem model)
         {
             
             if (!ModelState.IsValid)
@@ -72,6 +73,17 @@ namespace Library.Web.Controllers
             await librarian.ApplyFees(book, currentVisitor);
 
             return Json(new {result = "success"});
+        }
+        
+        [AcceptVerbs("Get", "Post")]
+        public async Task<IActionResult> VerifyEmail([FromServices] ILibrarian librarian, string authorEmail)
+        {
+            if (await librarian.CheckAccess())
+            {
+                return Json($"Selected author {authorEmail} is invalid");
+            }
+
+            return Json(true);
         }
     }
 }

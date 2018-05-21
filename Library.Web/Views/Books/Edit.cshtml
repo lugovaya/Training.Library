@@ -1,2 +1,49 @@
-﻿@model Library.Domain.Models.LibraryItem
+﻿@using Library.Services
+@model Library.Domain.Models.LibraryItem
+@inject ILibrarian Librarian
 
+@{
+    var index = 0;
+}
+
+@section Scripts
+{
+    <script></script>
+}
+<form asp-action="Edit" asp-controller="Books">
+    @Model
+    
+    @Html.AntiForgeryToken()
+
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title"/>
+        <span asp-validation-for="Title"></span>
+
+        @Html.LabelFor(x => x.Description)
+        @Html.TextBoxFor(x => x.Description)
+
+        @Html.CheckBox("some-checkbox-name")
+    </div>
+</form>
+    
+@while (true)
+{
+    index++;
+        
+    <div>@(index)</div>
+    
+    <span>I don't know why I need it but still @GetRandomInteger()</span>
+}
+
+@functions
+{
+
+    static int GetRandomInteger()
+    {
+        return new Random().Next();
+    }
+
+}

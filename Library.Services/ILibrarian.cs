@@ -11,6 +11,6 @@ namespace Library.Services
 
         Task ApplyFees(LibraryItem book, Visitor visitor);
 
-        Task CheckAccess();
+        Task<bool> CheckAccess();
     }
 }

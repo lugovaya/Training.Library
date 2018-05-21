@@ -21,9 +21,9 @@ namespace Library.Services
             throw new NotImplementedException();
         }
 
-        public Task CheckAccess()
+        public async Task<bool> CheckAccess()
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }
